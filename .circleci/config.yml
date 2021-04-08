@@ -31,11 +31,8 @@ jobs:
           name: Build app
           command: yarn build
       - run:
-          name: Zip file
-          command: tar -czvf dist.tar.gz dist/
-      - run:
           name: Deploy
-          command: scp -o StrictHostKeyChecking=no dist.tar.gz ubuntu@52.221.184.85:/projects
+          command: scp -o StrictHostKeyChecking=no -r dist ubuntu@52.221.184.85:/be
 workflows:
   deploy-app:
     jobs:
