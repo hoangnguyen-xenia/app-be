@@ -35,7 +35,7 @@ jobs:
           command: tar -czvf dist.tar.gz dist/
       - run:
           name: Deploy
-          command: scp dist.tar.gz ubuntu@52.221.184.85:/projects
+          command: scp -o StrictHostKeyChecking=no dist.tar.gz ubuntu@52.221.184.85:/projects
 workflows:
   deploy-app:
     jobs:
