@@ -27,6 +27,9 @@ jobs:
       - run:
           name: Check lint
           command: yarn lint
+      - run:
+          name: Build app
+          command: yarn build
 workflows:
   deploy-app:
     jobs:
