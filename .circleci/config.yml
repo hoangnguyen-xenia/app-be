@@ -29,7 +29,7 @@ jobs:
           command: yarn lint
       - run:
           name: Build app
-          command: yarn build
+          command: yarn build && ls
       - add_ssh_keys:
           fingerprints:
             - "2c:15:1e:67:5b:cb:9e:85:42:24:5a:80:d8:90:6b:9d"
