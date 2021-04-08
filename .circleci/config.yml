@@ -8,7 +8,7 @@ orbs:
   node: circleci/node@4.2.0
 
 jobs:
-  test:
+  install-app:
     executor: node/default
     steps:
       - checkout
@@ -24,13 +24,13 @@ jobs:
           name: Restore Yarn Package Cache
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-      - add_ssh_keys:
-          fingerprints:
-            - '03:d7:bc:d2:7f:0a:50:90:43:1c:ba:14:72:b6:39:63'
-      - run: cd |
-          ls |
-          ssh -o StrictHostKeyChecking=no ubuntu@18.139.226.17 "ls && cd aws/"
+  lint-app:
+    steps:
+      - run:
+          name: Check lint
+          command: yarn lint
 workflows:
-  test_my_app:
+  deploy-app:
     jobs:
-      - test
+      - install-app
+      - lint-app
