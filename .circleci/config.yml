@@ -24,8 +24,6 @@ jobs:
           name: Restore Yarn Package Cache
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-  lint-app:
-    steps:
       - run:
           name: Check lint
           command: yarn lint
@@ -33,4 +31,3 @@ workflows:
   deploy-app:
     jobs:
       - install-app
-      - lint-app
