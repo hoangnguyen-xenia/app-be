@@ -38,7 +38,7 @@ jobs:
           command: scp -o StrictHostKeyChecking=no -r dist package.json ubuntu@52.221.184.85:~/projects
       - run:
           name: Install dependencies
-          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 'export $PATH=/home/ubuntu/.yarn/bin:/home/ubuntu/.config/yarn/global/node_modules/.bin:/home/ubuntu/.nvm/versions/node/v14.16.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && cd projects && /home/ubuntu/.yarn/bin/yarn install && pm2 start dist/main.js --name backend-app && pm2 list'
+          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 'echo $PATH && cd projects && /home/ubuntu/.yarn/bin/yarn install && pm2 start dist/main.js --name backend-app && pm2 list'
 workflows:
   deploy-app:
     jobs:
