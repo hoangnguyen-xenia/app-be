@@ -38,7 +38,7 @@ jobs:
           command: scp -o StrictHostKeyChecking=no -r dist package.json ubuntu@52.221.184.85:~/projects/be
       - run:
           name: Install dependencies
-          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 "source ~/.nvm/nvm.sh && nvm -v && cd ~/projects/be && yarn install"
+          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 "source ~/.nvm/nvm.sh && nvm -v && cd ~/projects/be && yarn install && pm2 restart 0"
 workflows:
   deploy-app:
     jobs:
