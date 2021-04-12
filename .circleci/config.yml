@@ -38,7 +38,7 @@ jobs:
           command: scp -o StrictHostKeyChecking=no -r dist package.json ubuntu@52.221.184.85:~/projects
       - run:
           name: Install dependencies
-          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 'whoami'
+          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 "$PATH='/home/ubuntu/.nvm/versions/node/v14.16.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin' && cd ~/projects && yarn install"
 workflows:
   deploy-app:
     jobs:
