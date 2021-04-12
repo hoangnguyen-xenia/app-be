@@ -8,7 +8,7 @@ orbs:
   node: circleci/node@4.2.0
 
 jobs:
-  install-app:
+  deploy-app:
     executor: node/default
     steps:
       - checkout
@@ -35,10 +35,10 @@ jobs:
             - "2c:15:1e:67:5b:cb:9e:85:42:24:5a:80:d8:90:6b:9d"
       - run:
           name: Deploy
-          command: scp -o StrictHostKeyChecking=no -r dist package.json ubuntu@52.221.184.85:~/projects
+          command: scp -o StrictHostKeyChecking=no -r dist package.json ubuntu@52.221.184.85:~/projects/be
       - run:
           name: Install dependencies
-          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 "source ~/.nvm/nvm.sh && nvm -v && cd ~/projects && yarn install && pm2 restart 0"
+          command: ssh -t -o StrictHostKeyChecking=no ubuntu@52.221.184.85 "source ~/.nvm/nvm.sh && nvm -v && cd ~/projects/be && yarn install"
 workflows:
   deploy-app:
     jobs:
